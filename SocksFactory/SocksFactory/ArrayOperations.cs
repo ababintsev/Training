@@ -26,24 +26,25 @@ namespace SocksFactory
 		//O(n)
 
 
-		public static string[] ArrayMatch(int[] data1, int[] data2)
+		public static string[] ArrayMatch(int[] data1, int[] data2) //TO DO: O(n)
 		{			
-			string[] result = new string[data1.Length];
-			int resultIndex = 0;
-			for (int i = 0; i < data1.Length; i++)
+			string[] result = new string[data1.Length]; //T = 1
+			int resultIndex = 0;						//T = 1
+			for (int i = 0; i < data1.Length; i++)		//T = 1 + N + N
 			{
-				int value1 = data1[i];
-				for (int j = 0; j < data2.Length; j++)
+				int value1 = data1[i];					//2
+				for (int j = 0; j < data2.Length; j++)	//T = 1 + N + N
 				{
-					int value2 = data2[j];
-					if ((value1 + value2) == 0)
+					int value2 = data2[j];				//1
+					if ((value1 + value2) == 0)			//2
 					{
-						result[resultIndex++] = string.Format("{0}, {1}", value1, value2);
+						result[resultIndex++] = string.Format("{0}, {1}", value1, value2); //1 + 1 + 2
 					}
 				}
 			}
-			return result;
+			return result; //1
 		}
+		//T = 1 + 1 + 1 + N + N + (2 + 1 + N + N + (1 + 2 + 1 + 1 + 2))*N
 
 		public static string SpiralMatrix(int[,] matrix)
 		{			
@@ -128,6 +129,16 @@ namespace SocksFactory
 					}
 				}
 			}
+		}
+
+		public static int SearchForMissingNumber(int[] data)
+		{
+			int arraySum = data.Length * (data.Length + 1) / 2;
+			for(int i = 0; i < data.Length - 1; i++)
+			{
+				arraySum -= data[i];
+			}
+			return arraySum;
 		}
 
 		public static void QuickSort(int[] data, int start, int end)

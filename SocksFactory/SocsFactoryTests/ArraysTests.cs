@@ -85,6 +85,20 @@ namespace SocsFactoryTests
 			ArrayOperations.SelectionSort(data);
 			Assert.AreEqual(data, expectedData);
 		}
+		[Test]
+		public void SearchForMissingNumber()
+		{
+			int[] data = { 1, 2, 4, 6, 3, 7, 8 };
+			int result = ArrayOperations.SearchForMissingNumber(data);
+			Assert.IsTrue(result == 5);
+		}
+		[Test]
+		public void SearchForMissingNumber1()
+		{
+			int[] data = { 1, 2, 4, 6, 3, 7, 8, 5, 10 };
+			int result = ArrayOperations.SearchForMissingNumber(data);
+			Assert.IsTrue(result == 9);
+		}
 	}
 }
 
