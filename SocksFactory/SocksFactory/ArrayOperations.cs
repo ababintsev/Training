@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Linq;
-
-namespace SocksFactory
+﻿namespace SocksFactory
 {
 	public static class ArrayOperations
 	{		
@@ -29,21 +24,12 @@ namespace SocksFactory
 		public static string ArrayMatch(int[] data1, int[] data2) //TO DO: O(n)
 		{
 			string result = string.Empty;
-			int i = 0;
-			int j = 0;
-			while (i < data2.Length - 1)
+			for(int i = 0; i < data1.Length; i++)
 			{
-				if (j >= data2.Length)
+				if (data1[i] + data2[i] == 0)
 				{
-					j = 0;
-					i++;
+					result += $"({data1[i]}, {data2[i]})";
 				}
-				if ((data1[i] + data2[j]) == 0)
-				{
-					result += ($"({data1[i]}, {data2[i]})");
-					//result.Append(string.Format("{0}, {1}", i, j));
-				}
-				j++;
 			}
 			return result;
 		}
