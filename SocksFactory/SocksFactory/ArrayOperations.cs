@@ -26,23 +26,26 @@ namespace SocksFactory
 		//O(n)
 
 
-		public static string[] ArrayMatch(int[] data1, int[] data2) //TO DO: O(n)
-		{			
-			string[] result = new string[data1.Length]; //T = 1
-			int resultIndex = 0;						//T = 1
-			for (int i = 0; i < data1.Length; i++)		//T = 1 + N + N
+		public static string ArrayMatch(int[] data1, int[] data2) //TO DO: O(n)
+		{
+			string result = string.Empty;
+			int i = 0;
+			int j = 0;
+			while (i < data2.Length - 1)
 			{
-				int value1 = data1[i];					//2
-				for (int j = 0; j < data2.Length; j++)	//T = 1 + N + N
+				if (j >= data2.Length)
 				{
-					int value2 = data2[j];				//1
-					if ((value1 + value2) == 0)			//2
-					{
-						result[resultIndex++] = string.Format("{0}, {1}", value1, value2); //1 + 1 + 2
-					}
+					j = 0;
+					i++;
 				}
+				if ((data1[i] + data2[j]) == 0)
+				{
+					result += ($"({data1[i]}, {data2[i]})");
+					//result.Append(string.Format("{0}, {1}", i, j));
+				}
+				j++;
 			}
-			return result; //1
+			return result;
 		}
 		//T = 1 + 1 + 1 + N + N + (2 + 1 + N + N + (1 + 2 + 1 + 1 + 2))*N
 
